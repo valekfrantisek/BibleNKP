@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biblické citáty v tisku 30. let: Workflow & data</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet"
+      href="highlight_2/styles/androidstudio.min.css">
+<!-- what style to choose? I like androidstudio.min.css ... something to hit the design system???-->
+<script src="highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+</head>
+<body>
+    <div class="menu-block">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="menu-logo">
+                    <img src="images/logo.svg" alt="NK logo" style="height: 32px;">
+                </div>
+                <input type="checkbox" name="" id="">
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+                <ul class="menu-items">
+                    <a href="index.html"><li>Biblické citáty</li></a>
+                    <a href="dl4dh.html"><li>DL4DH</li></a>
+                    <a href="about.html"><li>O projektu</li></a>
+                    <a href="workflowdata.html"><li>Workflow & data</li></a>
+                    <a href="nkdh.html"><li>Národní knihovna & Digital Humanities</li></a>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="header">
+        <div class="header-content-box">
+            <div class="header-text-content">
+                <h1 class="h1-header">Workflow & data</h1>
+                <p class="p-header">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent in mauris eu tortor porttitor accumsan. Maecenas aliquet accumsan leo. Praesent dapibus. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aenean id metus id velit ullamcorper pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-window-white">
+        <div class="content-inner-box">
+            <div class="content-text">
+                <h2>Code example</h2>
+                <h3>code section</h3>
+                <p>Here is some code example</p>
+                <p>With short explanation: Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent in mauris eu tortor porttitor accumsan. Maecenas aliquet accumsan leo. Praesent dapibus.</p>
+            </div>
+            <pre>
+                <code class="language-python">
+import pandas as pd
+import numpy as np
+import networkx as nx
+import matplotlib.pyplot as plt
+
+# This is a comment
+""" Other comment """
+
+df = pd.DataFrame({ 'from':['A', 'B', 1,'A', 3], 'to':['D', 'A', 'E','C', 'M']})
+
+print(df)
+
+def make_edges_for_verses_by_periodics(input_data:dict):
+    """This function returns dataframe of connections."""
+    verse_tuples = []
+
+    return verse_tuples
+                </code>
+            </pre>
+            <div class="content-text">
+                <h3>other code section</h3>
+                <p>With some other description...</p>
+            </div>
+            <pre>
+                <code class="language-python">
+colours_blues = ['#CCE8EE', '#66B9CB', '#008BA8', '#005365', '#001C22']
+colours_green = ['#B3E5D4', '#4DC29C', '#00A871', '#00764F', '#003222']
+colours_orange = ['#F7DEBF', '#EBB16B', '#E3902B', '#9F651E', '#442B0D']
+colours_red = ['#F7C2BF', '#EB716B', '#E3342B', '#9F241E', '#44100D']
+
+colour_pt1 = [(33, 58, 63), (73, 99, 104), (0, 137, 112), (127, 209, 174), (184, 206, 170), (204, 232, 238), (233, 223, 247)]
+colour_pt2 = [(178, 168, 191), (131, 79, 98), (251, 179, 205), (252, 221, 203), (191, 90, 0), (131, 40, 0), (173, 137, 115)]
+                </code>
+            </pre>
+            <div class="content-text">
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent in mauris eu tortor porttitor accumsan. Maecenas aliquet accumsan leo. Praesent dapibus.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-window-grey">
+        <div class="content-inner-box">
+            <div class="content-text">
+                <h2>Nadpis</h2>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Praesent in mauris eu tortor porttitor accumsan. Maecenas aliquet accumsan leo. Praesent dapibus. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Aenean id metus id velit ullamcorper pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos hymenaeos. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="inner-footer">
+            <span>Vytvořeno v rámci projektu Dl4DH + celá dedikace</span>
+            <div class="footer-info">
+                <span>(c)2022 NÁRODNÍ KNIHOVNA</span>
+                <span>OCHRANA OSOBNÍCH ÚDAJŮ & COOKIES</span>
+                <span>DESIGNED BY VÁCLAV & JAN</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js" integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script type="module" src="plot_data.js"></script>
+
+    <!-- Network charts -->
+    <script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-graph.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-data-adapter.min.js"></script>
+    <script type="module" src="network.js"></script>
+
+</body>
+</html>
