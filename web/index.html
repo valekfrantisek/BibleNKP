@@ -32,6 +32,10 @@ DEDIKACE používaných scriptů (chart.js, flourish, highlight), dedikace pytho
                     <a href="about.html"><li>O projektu</li></a>
                     <a href="workflowdata.html"><li>Workflow & data</li></a>
                     <a href="nkdh.html"><li>Národní knihovna & Digital Humanities</li></a>
+                    <div class="media-links">
+                        <a href="https://github.com/valekfrantisek/BibleNKP"><img src="images/GitHub-Mark-32px.png" alt="GitHub"></a>
+                        <a href="https://www.facebook.com/narodni.knihovna/"><img src="images/facebook_logo.svg" alt="GitHub"></a>
+                    </div>
                 </ul>
             </div>
         </nav>
@@ -90,15 +94,15 @@ DEDIKACE používaných scriptů (chart.js, flourish, highlight), dedikace pytho
                     </select>
                 </span>
                 <span>
-                    <p class="chart-change-notes">Přepnout typ grafu</p>
+                    <span class="chart-change-notes">Přepnout typ grafu</span>
                 </span>
-                <span>
+                <span class="two-buttons">
                     <button id="BarLineButton">čárový graf</button>
+                    <button id="RotateChartButton" class="rotate-chart">otočit graf</button>
                 </span>
-                <input type="checkbox" class="rotate-chart">
-                <div class="chart-1">
-                    <canvas id="chartCitationsTopInYears" class="chart-canvas"></canvas>
-                </div>
+            </div>
+            <div class="chart-1">
+                <canvas id="chartCitationsTopInYears" class="chart-canvas"></canvas>
             </div>
         </div>
     </div>

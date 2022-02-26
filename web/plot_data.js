@@ -184,6 +184,55 @@ const lineOptions = {
     radius: 0,
 }
 
+const barHorizontalOptions = {
+    aspectRatio: 0.8,
+    indexAxis: 'y',
+    scales: {
+        y: {
+            min: 0,
+            max: 10
+        },
+        x: {
+            beginAtZero: true
+        }
+    },
+    responsive: true,
+    skipNull: true,
+    plugins: {
+        legend: {
+            display: true,
+            position: 'bottom',
+        }
+    }
+}
+
+const lineHorizontalOptions = {
+    aspectRatio: 0.8,
+    indexAxis: 'y',
+    scales: {
+        y: {
+            min: 0,
+            max: 10
+        },
+        x: {
+            beginAtZero: true
+        }
+    },
+    responsive: true,
+    skipNull: true,
+    plugins: {
+        legend: {
+            display: true,
+            position: 'bottom',
+        }
+    },
+    fill: false,
+    interaction: {
+        intersect: false
+    },
+    radius: 0,
+}
+
 // Top citations in years chart:
 let configTopInYears = {
     type: 'bar',
@@ -197,13 +246,19 @@ let chartCitationsTopInYears = new Chart(
 );
 
 // Change year scale
-function changeYearsTopInYears(start, end) {
-    chartCitationsTopInYears.options.scales.x.min = start;
-    chartCitationsTopInYears.options.scales.x.max = end;
-    chartCitationsTopInYears.update();
+function changeYearsTopInYears(start, end, chartOrientation) {
+    if (chartOrientation == 'vertical') {
+        chartCitationsTopInYears.options.scales.x.min = start;
+        chartCitationsTopInYears.options.scales.x.max = end;
+        chartCitationsTopInYears.update();
+    } else if (chartOrientation == 'horizontal') {
+        chartCitationsTopInYears.options.scales.y.min = start;
+        chartCitationsTopInYears.options.scales.y.max = end;
+        chartCitationsTopInYears.update();
+    };
 }
 
-// YearSlider settings
+// Apply slider change
 let yearSlider = document.getElementById('slider-round');
 
 noUiSlider.create(yearSlider, {
@@ -234,22 +289,30 @@ yearSlider.noUiSlider.on('update', function (values, handle) {
     }
 });
 
-// Apply slider change
-yearSlider.noUiSlider.on('update', function() {changeYearsTopInYears(minYearId,maxYearId)});
+let currentChartOrientation = 'vertical';
+yearSlider.noUiSlider.on('update', function() {changeYearsTopInYears(minYearId, maxYearId, currentChartOrientation)});
 
 // Change chart type:
 let barLineButton = document.getElementById('BarLineButton');
 
 function changeChartType() {
     chartCitationsTopInYears.destroy();
-    if (configTopInYears.type == 'bar') {
+    if (configTopInYears.options == barOptions) {
         configTopInYears.type = 'line';
         configTopInYears.options = lineOptions;
         barLineButton.innerHTML = 'sloupcový graf';
-    } else if (configTopInYears.type == 'line') {
+    } else if (configTopInYears.options == lineOptions) {
         configTopInYears.type = 'bar';
         barLineButton.innerHTML = 'čárový graf';
         configTopInYears.options = barOptions;
+    } else if (configTopInYears.options == lineHorizontalOptions) {
+        configTopInYears.type = 'bar';
+        barLineButton.innerHTML = 'čárový graf';
+        configTopInYears.options = barHorizontalOptions;
+    } else if (configTopInYears.options == barHorizontalOptions) {
+        configTopInYears.type = 'line';
+        barLineButton.innerHTML = 'sloupcový graf';
+        configTopInYears.options = lineHorizontalOptions;
     };
     chartCitationsTopInYears = new Chart(
         document.getElementById('chartCitationsTopInYears'),
@@ -266,25 +329,90 @@ let selectedDataset = document.getElementById('selectDataset');
 function changeDataset() {
     if (selectedDataset.value == 'Top') {
         datasets = dataForPlottingTop.map(makeDatasets);
-        chartCitationsTopInYears.data.datasets = datasets
+        chartCitationsTopInYears.data.datasets = datasets;
         chartCitationsTopInYears.update();
         console.log(datasets);
     } else if (selectedDataset.value == 'TopEvangelia') {
         datasets = dataForPlottingTopEvangelia.map(makeDatasets);
-        chartCitationsTopInYears.data.datasets = datasets
+        chartCitationsTopInYears.data.datasets = datasets;
         chartCitationsTopInYears.update();
         console.log(configTopInYears.datasets);
     } else if (selectedDataset.value == 'TopNZ') {
         datasets = dataForPlottingTopNZ.map(makeDatasets);
-        chartCitationsTopInYears.data.datasets = datasets
+        chartCitationsTopInYears.data.datasets = datasets;
         chartCitationsTopInYears.update();
         console.log(configTopInYears.datasets);
     } else if (selectedDataset.value == 'TopSZ') {
         datasets = dataForPlottingTopSZ.map(makeDatasets);
-        chartCitationsTopInYears.data.datasets = datasets
+        chartCitationsTopInYears.data.datasets = datasets;
         chartCitationsTopInYears.update();
         console.log(configTopInYears.datasets);
     };
 }
 
 selectedDataset.onchange = function() {changeDataset()};
+
+// Rotate chart:
+let rotateChartButton = document.getElementById('RotateChartButton');
+
+function RotateChart() {
+    chartCitationsTopInYears.destroy();
+    if (configTopInYears.options == barOptions) {
+        configTopInYears.type = 'bar';
+        configTopInYears.options = barHorizontalOptions;
+        currentChartOrientation = 'horizontal';
+    } else if (configTopInYears.options == lineOptions) {
+        configTopInYears.type = 'line';
+        configTopInYears.options = lineHorizontalOptions;
+        currentChartOrientation = 'horizontal';
+    } else if (configTopInYears.options == lineHorizontalOptions) {
+        configTopInYears.type = 'line';
+        configTopInYears.options = lineOptions;
+        currentChartOrientation = 'vertical';
+    } else if (configTopInYears.options == barHorizontalOptions) {
+        configTopInYears.type = 'bar';
+        configTopInYears.options = barOptions;
+        currentChartOrientation = 'vertical';
+    };
+    chartCitationsTopInYears = new Chart(
+        document.getElementById('chartCitationsTopInYears'),
+        configTopInYears);
+    changeYearsTopInYears(minYearId,maxYearId);
+    chartCitationsTopInYears.update();
+}
+
+rotateChartButton.onclick = function() {RotateChart()};
+
+function unrotateWithWidth() {
+    if (window.matchMedia("(max-width: 550px)").matches) {
+        console.log('mobile charts')
+    } else {
+        if (configTopInYears.options == lineHorizontalOptions) {
+            chartCitationsTopInYears.destroy();
+
+            configTopInYears.type = 'line';
+            configTopInYears.options = lineOptions;
+            currentChartOrientation = 'vertical';
+            
+            chartCitationsTopInYears = new Chart(
+                document.getElementById('chartCitationsTopInYears'),
+                configTopInYears);
+            changeYearsTopInYears(minYearId,maxYearId);
+            chartCitationsTopInYears.update();
+        } else if (configTopInYears.options == barHorizontalOptions) {
+            chartCitationsTopInYears.destroy();
+            
+            configTopInYears.type = 'bar';
+            configTopInYears.options = barOptions;
+            currentChartOrientation = 'vertical';
+            
+            chartCitationsTopInYears = new Chart(
+                document.getElementById('chartCitationsTopInYears'),
+                configTopInYears);
+            changeYearsTopInYears(minYearId,maxYearId);
+            chartCitationsTopInYears.update();
+        };
+    };
+}
+
+window.addEventListener("resize", function() {unrotateWithWidth()});

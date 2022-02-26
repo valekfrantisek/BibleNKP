@@ -114,6 +114,8 @@ body {
 
 .menu-items {
     display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 .menu-items li {
@@ -126,12 +128,37 @@ body {
     font-weight: bold;
     font-size: 12px;
     text-align: center;
-    padding: 14px;
+    padding: 20px;
     text-decoration: none;
+    transition: 0.3s;
 }
 
 .menu-items a:hover {
     color: #008BA8;
+}
+
+.media-links {
+    display: flex;
+    flex-direction: row;
+    padding-left: 15px;
+}
+
+.media-links img {
+    height: 12px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+@media (max-width: 1110px) {
+    .menu-items a {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 1030px) {
+    .menu-items a {
+        padding: 7px;
+    }
 }
 
 /* MENU - mobile mode */
@@ -207,7 +234,7 @@ body {
         position: relative;
         height: auto;
         min-width: 90%;
-        top: 48px;
+        top: 44px;
         margin: auto;
         display: flex;
         flex-direction: column;
@@ -217,6 +244,10 @@ body {
         border-bottom: 2px solid black;
         }
 
+    .menu-items a {
+        padding: 10px;
+        }
+    
     .menu-items li {
         font-size: 18px;
         text-align: center;
@@ -252,6 +283,10 @@ body {
     .navbar-container input[type="checkbox"]:checked ~ .hamburger-lines .line3 {
         transform: rotate(-45deg);
         }
+    
+    .media-links img {
+        height: 24px;
+    }
     }  
 
 /* HEADER */
@@ -288,7 +323,11 @@ body {
 .header-image {
     max-width: 350px;
     width: 30%;
-    height: auto;
+}
+
+.header-image-link {
+    min-width: 250px;
+    max-width: 30%;
     float: right;
 }
 
@@ -306,6 +345,16 @@ body {
     font-size: 16px;
     display: block;
     width: 95%;
+    align-items: center;
+}
+
+.p-header a {
+    color: #008BA8;
+    text-decoration: none;
+}
+
+.p-header a:hover {
+    color: #005365;
 }
 
 /* CONTENTS */
@@ -398,6 +447,15 @@ p {
     line-height: 32px;
 }
 
+.content-inner-box a {
+    color: #008BA8;
+    text-decoration: none;
+}
+
+.content-inner-box a:hover {
+    color: #005365;
+}
+
 /* CHART - desktop mode */
 .chart-1 {
     width: 90%;
@@ -416,6 +474,11 @@ p {
     font-style: normal;
     font-weight: bold;
     font-size: 14px;
+    transition: 0.5s;
+}
+
+.chart-navigation select:hover {
+    background-color: #F6F6F6;
 }
 
 button {
@@ -430,6 +493,11 @@ button {
     font-weight: bold;
     font-size: 14px;
     padding: 0px 20px 0px 20px;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #F6F6F6;
 }
 
 .chart-change-notes {
@@ -515,6 +583,10 @@ button {
     display: none;
 }
 
+.chart-change-notes-rotate {
+    display: none;
+}
+
 /* CHART NAVIGATION - tablet/mobile mode */
 @media (max-width: 1000px) {
     .chart-1 {
@@ -565,38 +637,20 @@ button {
 
 /* add rotate chart button when width is low */
 @media (max-width: 550px) {
-    .rotate-chart {
+    .two-buttons {
         display: flex;
-        padding-top: 25px;
-        z-index: 1;
-    }
-
-    .chart-1 {
-        transform: rotate(0deg);
-        overflow: auto;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .chart-canvas {
-        transform: rotate(0deg);
-        overflow: auto;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .rotate-chart input[type="checkbox"]:checked ~ .chart-canvas {
-        transform: rotate(90deg);
+        flex-direction: row;
         margin: auto;
-        height: auto;
-        overflow: auto;
-        transition: transform 0.5s ease-in-out;
+        width: 75vw;
+    }
+    
+    .two-buttons button {
+        width: 35vw;
+        margin: auto;
     }
 
-    .chart-navigation input[type="checkbox"]:checked ~ .chart-1 {
-        transform: rotate(90deg);
-        margin: auto;
-        height: auto;
-        overflow: auto;
-        transition: transform 0.5s ease-in-out;
+    .rotate-chart {
+        display: block;
     }
 }
 
@@ -689,11 +743,6 @@ pre code {font-family: Consolas,"courier new";
         flex-direction: column;
     }
 
-    .header-content-box .p-header {
-        display: flex;
-        flex-direction: column;
-    }
-
     .h1-header {
         font-family: "Newsreader Bold";
         font-size: 32px;
@@ -701,6 +750,10 @@ pre code {font-family: Consolas,"courier new";
     
     .header-image {
         width: 80%;
+    }
+
+    pre code {
+        width: 90%;
     }
 }
 
