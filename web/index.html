@@ -13,12 +13,13 @@ DEDIKACE používaných scriptů (chart.js, flourish, highlight), dedikace pytho
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css" integrity="sha512-qveKnGrvOChbSzAdtSs8p69eoLegyh+1hwOMbmpCViIwj7rn4oJjdmMvWOuyQlTOZgTlZA0N2PXA7iA8/2TUYA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <div class="menu-block">
-        <nav class="navbar">
-            <div class="navbar-container">
+<body>    
+    <!-- TOP Menu-->
+    <div class="menu-block" id="menu-block">
+        <nav class="navbar" id="navbar">
+            <div class="navbar-container" id="navbar-container">
                 <div class="menu-logo">
-                    <a href="https://www.nkp.cz/"><img src="images/logo.svg" alt="NK logo" style="height: 32px;"></a>
+                    <a href="https://www.nkp.cz/"><img src="images/NKP_logo_colors.svg" alt="NK logo" style="height: 32px;"></a>
                 </div>
                 <input type="checkbox" name="" id="">
                 <div class="hamburger-lines">
@@ -33,13 +34,42 @@ DEDIKACE používaných scriptů (chart.js, flourish, highlight), dedikace pytho
                     <a href="workflowdata.html"><li>Workflow & data</li></a>
                     <a href="nkdh.html"><li>Národní knihovna & Digital Humanities</li></a>
                     <div class="media-links">
-                        <a href="https://github.com/valekfrantisek/BibleNKP"><img src="images/GitHub-Mark-32px.png" alt="GitHub"></a>
-                        <a href="https://www.facebook.com/narodni.knihovna/"><img src="images/facebook_logo.svg" alt="GitHub"></a>
+                        <a href="https://github.com/valekfrantisek/BibleNKP"><img src="images/GitHubMark.svg" alt="GitHub" onmouseover="this.src='images/GitHubMark_hover.svg';" onmouseout="this.src='images/GitHubMark.svg';"></a>
+                        <a href="https://www.facebook.com/narodni.knihovna/"><img src="images/facebookLogo.svg" alt="GitHub" onmouseover="this.src='images/facebookLogo_hover.svg';" onmouseout="this.src='images/facebookLogo.svg';"></a>
                     </div>
                 </ul>
             </div>
         </nav>
     </div>
+    
+    <!-- STICKY Menu - after srcroll-->
+    <div class="menu-block" id="sticky-menu-block">
+        <nav class="navbar" id="sticky-navbar">
+            <div class="navbar-container" id="sticky-navbar-container">
+                <div class="menu-logo">
+                    <a href="https://www.nkp.cz/"><img src="images/NKP_logo_colors.svg" alt="NK logo" style="height: 32px;"></a>
+                </div>
+                <input type="checkbox" name="" id="">
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+                <ul class="menu-items" id="sticky-menu-items">
+                    <a href="index.html"><li>Biblické citáty</li></a>
+                    <a href="dl4dh.html"><li>DL4DH</li></a>
+                    <a href="about.html"><li>O projektu</li></a>
+                    <a href="workflowdata.html"><li>Workflow & data</li></a>
+                    <a href="nkdh.html"><li>Národní knihovna & Digital Humanities</li></a>
+                    <div class="media-links">
+                        <a href="https://github.com/valekfrantisek/BibleNKP"><img src="images/GitHubMark.svg" alt="GitHub" onmouseover="this.src='images/GitHubMark_hover.svg';" onmouseout="this.src='images/GitHubMark.svg';"></a>
+                        <a href="https://www.facebook.com/narodni.knihovna/"><img src="images/facebookLogo.svg" alt="Facebook" onmouseover="this.src='images/facebookLogo_hover.svg';" onmouseout="this.src='images/facebookLogo.svg';"></a>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
     <div class="header">
         <div class="header-content-box">
             <div class="header-text-content">
@@ -127,18 +157,15 @@ DEDIKACE používaných scriptů (chart.js, flourish, highlight), dedikace pytho
         </div>
     </div>
 
-    <!-- Charts -->
+    <!-- Charts by chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js" integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wnumb/1.2.0/wNumb.min.js" integrity="sha512-igVQ7hyQVijOUlfg3OmcTZLwYJIBXU63xL9RC12xBHNpmGJAktDnzl9Iw0J4yrSaQtDxTTVlwhY730vphoVqJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script type="module" src="plot_data.js"></script>
 
-    <!-- Network charts -->
-    <script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-graph.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-data-adapter.min.js"></script>
-    <script type="module" src="network.js"></script>
+    <!-- For scroll menu -->
+    <script type="module" src="menu.js"></script>
 
 </body>
 </html>
